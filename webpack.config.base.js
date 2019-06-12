@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js', // Application initial file
@@ -15,10 +15,21 @@ module.exports = {
                 exclude: /node_modules/, // ignores node_modules
                 options: {
                     presets: [
-                        '@babel/preset-env', // Transpile ES6 to older JS
+                        ['@babel/preset-env', { // Transpile ES6 to older JS
+                            targets: [ // Removes the polyfills that are not necessary to newer browsers
+                                'last 2 versions', // These strings are used as queries in npx browserlist
+                                'not dead',
+                                'not < 2%', // Not less than 2% of market share
+                                'not ie 11'
+                            ],
+                            useBuiltIns: 'entry'
+                        }], 
                         '@babel/preset-react' // Transpile JSX to JS
                     ],
-                    plugins: ['@babel/plugin-proposal-class-properties'] // Allow properties inside js classes
+                    plugins: [
+                        '@babel/plugin-proposal-class-properties', // Allow properties inside js classes
+                        '@babel/plugin-syntax-dynamic-import' // Allow code split
+                    ]
                 }
             },
             {
