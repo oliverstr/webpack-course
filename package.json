@@ -6,7 +6,13 @@
   "scripts": {
     "test": "jest --config ./jest.json",
     "build": "webpack --config webpack.config.prod.js",
-    "dev": "webpack-dev-server --open --config webpack.config.dev.js"
+    "dev": "webpack-dev-server --open --config webpack.config.dev.js",
+    "format": "pretty-quick"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run format"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +28,10 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^2.4.1",
     "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.33.0",
     "webpack-bundle-analyzer": "^3.3.2",
