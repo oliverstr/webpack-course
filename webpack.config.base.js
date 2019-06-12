@@ -22,14 +22,11 @@ module.exports = {
                                 'not < 2%', // Not less than 2% of market share
                                 'not ie 11'
                             ],
-                            useBuiltIns: 'entry'
+                            useBuiltIns: 'usage', // it will only adds the polyfills we are really using
+                            corejs: 3,
                         }], 
                         '@babel/preset-react' // Transpile JSX to JS
                     ],
-                    plugins: [
-                        '@babel/plugin-proposal-class-properties', // Allow properties inside js classes
-                        '@babel/plugin-syntax-dynamic-import' // Allow code split
-                    ]
                 }
             },
             {

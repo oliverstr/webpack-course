@@ -1,0 +1,19 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "10"
+                },
+                "useBuiltIns": false,
+                "debug": false
+            }
+        ],
+        "@babel/preset-react"
+    ],
+    "plugins": [
+        "@babel/plugin-proposal-class-properties", // Allow properties inside js classes
+        "@babel/plugin-syntax-dynamic-import" // Allow code split
+    ]
+}
